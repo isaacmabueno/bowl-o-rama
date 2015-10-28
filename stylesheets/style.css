@@ -1,3 +1,5 @@
-h1 .main {
+h1.main {
   font-family: 'Open Sans Condensed';
+  text-align: center;
+  font-size: 50px;
 }
