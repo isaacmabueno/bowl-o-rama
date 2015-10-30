@@ -13,18 +13,50 @@
   </head>
   <!-- naming app -->
   <body ng-app="bowlsToTheWall" ng-controller="bowlingController">
-      <nav>
-        <div class="#login">
-          <!-- <button type="button" name="log-in">Log-In</button> -->
-{{x}}
-        </div>
-      </nav>
     <h1 class="main">Bowl-O-Rama</h1>
-    <table>
-      <tr>
+        <div class="container" ng-show="showLoginPage">
+          <!-- <button type="button" name="log-in">Log-In</button> -->
+          <div class="logIn row">
+            <div class="col-xs-4">
+            <h1>Log-In</h1>
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input ng-model="loginEmail" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input ng-model="loginPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <button ng-click="loginSubmit()" type="submit" class="btn btn-primary">Submit</button>
+              <button ng-click="createAccount()" class="btn btn-default" type="button" name="button">I don't have an account</button>
+              </form>
+              </div>
+          </div>
+        </div>
 
+        <div class="container" ng-show="showSignUpPage">
+        <div class="signUp row">
+        <div class="col-xs-4">
+          <h1>Sign-Up</h1>
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input ng-model="signUpEmail" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input ng-model="signUpPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <button ng-click="signUpSubmit()" type="submit" class="btn btn-primary">Submit</button>
+            <button ng-click="hasAccount()" class="btn btn-default" type="button" name="button">I already have an account</button>
+            </form>
+            </div>
+        </div>
+      </div>
+      <div class="container jumbotron" ng-show="showDashboard">
+        <h1>Dashboard Confessional</h1>
 
-      </tr>
-    </table>
+      </div>
   </body>
 </html>
