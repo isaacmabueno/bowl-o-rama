@@ -27,7 +27,7 @@ app.controller("bowlingController", ['$scope', function($scope) {
         $scope.showSignUpPage=false;
         $scope.showLoginPage=false;
         $scope.showDashboard=true;
-        $scope.createNewBowler=true;
+        $scope.createANewBowler=true;
       },
       error: function(xhr)  {
         console.log(JSON.parse(xhr.responseText));
