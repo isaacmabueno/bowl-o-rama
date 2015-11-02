@@ -43,6 +43,17 @@ app.controller("bowlingController", ['$scope', function($scope) {
       }
       });
   };
+  $scope.createNewBowler = function() {
+  client.createBowler ({
+  name: 'Billy Bowler',
+  success: function(bowler) {
+    console.log(bowler);
+  },
+  error: function(xhr)  {
+    console.log(JSON.parse(xhr.responseText));
+  }
+});
+};
   $scope.createAccount = function() {
   $scope.showSignUpPage=true;
   $scope.showLoginPage=false;

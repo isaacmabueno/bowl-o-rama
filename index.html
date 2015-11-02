@@ -9,11 +9,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src='client/lib/client.js'></script>
 <script type="text/javascript" src="scripts/app.js"></script>
+
     <title>Bowl-O-Rama</title>
   </head>
   <!-- naming app -->
   <body ng-app="bowlsToTheWall" ng-controller="bowlingController">
     <h1 class="main">Bowl-O-Rama</h1>
+
+    <!--//////////// L O G I N ///////////////-->
         <div class="container" ng-show="showLoginPage">
           <!-- <button type="button" name="log-in">Log-In</button> -->
           <div class="logIn row">
@@ -34,7 +37,7 @@
               </div>
           </div>
         </div>
-
+        <!--///////////////// S I G N   U P /////////////////-->
         <div class="container" ng-show="showSignUpPage">
         <div class="signUp row">
         <div class="col-xs-4">
@@ -54,6 +57,7 @@
             </div>
         </div>
       </div>
+      <!-- ///////////// H O M E  -  P A G E /////////// -->
       <div class="container jumbotron" ng-show="showDashboard">
         <h1>Dashboard/Home Page</h1>
         <h3>
