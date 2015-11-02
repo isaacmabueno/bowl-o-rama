@@ -10,10 +10,12 @@ app.controller("bowlingController", ['$scope', function($scope) {
   $scope.showLoginPage=true;
   $scope.showSignUpPage=false;
   $scope.showDashboard=false;
+  $scope.createNewBowler=false;
   $scope.loginEmail="";
   $scope.loginPassword="";
   $scope.signUpEmail="";
   $scope.signUpPassword="";
+  $scope.createNewBowlerName="";
   // access to these variables inside the $scope function. I can access the API in this function
   $scope.loginSubmit = function() {
     client.loginUser({
@@ -25,6 +27,7 @@ app.controller("bowlingController", ['$scope', function($scope) {
         $scope.showSignUpPage=false;
         $scope.showLoginPage=false;
         $scope.showDashboard=true;
+        $scope.createNewBowler=true;
       },
       error: function(xhr)  {
         console.log(JSON.parse(xhr.responseText));
@@ -41,19 +44,19 @@ app.controller("bowlingController", ['$scope', function($scope) {
       error: function(xhr)  {
         console.log(JSON.parse(xhr.responseText));
       }
-      });
+    });
   };
   $scope.createNewBowler = function() {
-  client.createBowler ({
-  name: 'Billy Bowler',
-  success: function(bowler) {
-    console.log(bowler);
-  },
-  error: function(xhr)  {
-    console.log(JSON.parse(xhr.responseText));
-  }
-});
-};
+    client.createBowler ({
+      name: $scope.createNewBowlerName,
+      success: function(bowler) {
+        console.log(bowler);
+      },
+      error: function(xhr)  {
+        console.log(JSON.parse(xhr.responseText));
+      }
+    });
+  };
   $scope.createAccount = function() {
   $scope.showSignUpPage=true;
   $scope.showLoginPage=false;
