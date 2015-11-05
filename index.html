@@ -108,11 +108,27 @@
           </ul>
       </div>
       <!-- B O W L I N G     L E A G U E S -->
-      <div class="container leagues" ng-show=viewAllLeaguesPage>
+      <div class="container leagues" ng-show="viewAllLeaguesPage">
         <h1>All Leagues</h1>
         <ul>
-          <li ng-repeat="league in leagues" class="lists">{{league.name}}</li>
+          <li ng-repeat="league in leagues" class="lists"><a ng-click="getSpecificLeague(league.id)">{{league.name}}</a></li>
         </ul>
+      </div>
+      <div class="container specificLeague" ng-show="getSpecificLeaguePage">
+        <h1>{{league.name}}</h1>
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Add New Bowler To League</label>
+            <input ng-model="newBowlerToLeague" type="number" class="form-control" id="" placeholder="Name">
+          </div>
+          <button ng-click="joinLeague(newBowlerToLeague,league.id)" type="submit" class="btn btn-primary">Add To League</button>
+
+          </form>
+          <div class="">
+
+          </div>
+
+
       </div>
   </body>
 </html>

@@ -97,6 +97,51 @@ app.controller("bowlingController", ['$scope', function($scope) {
   }
 });
   };
+  //placing league in this function passes the league id back because I threw it in the paramaters in the HTML file
+  $scope.getSpecificLeague = function(leagueId) {
+    client.getLeague({
+  leagueId: leagueId,
+  success: function(league) {
+    console.log(league);
+    $scope.showDashboard=false;
+    $scope.viewAllBowlersPage=false;
+    $scope.viewAllLeaguesPage=false;
+    $scope.getSpecificLeaguePage=true;
+    $scope.league=league;
+    // $scope.listofbowlers = getAllBowlersInLeague()
+  },
+  error: function(xhr)  {
+    console.log(JSON.parse(xhr.responseText));
+  }
+});
+  };
+
+  $scope.joinLeague = function(bowlerId, leagueId) {
+    client.joinLeague({
+    bowlerId: bowlerId,
+    leagueId: leagueId,
+    success: function(bowlers) {
+      console.log(bowlers);
+    },
+    error: function(xhr)  {
+      console.log(JSON.parse(xhr.responseText));
+    }
+  });
+};
+//make sure the NG models and clicks are in HTML and syncing that up with my APP.JS
+// figure out when youre going to call this function
+  function getAllBowlersInLeague(leagueId) {
+  client.getBowlers({
+    leagueId: leagueId,
+    success: function(bowlers) {
+      console.log(bowlers);
+      return bowlers;
+    },
+    error: function(xhr)  {
+      console.log(JSON.parse(xhr.responseText));
+    }
+  });
+};
   $scope.createAccount = function() {
   $scope.showSignUpPage=true;
   $scope.showLoginPage=false;
