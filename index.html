@@ -14,7 +14,7 @@
   </head>
   <!-- naming app -->
   <body class="container" ng-app="bowlsToTheWall" ng-controller="bowlingController">
-    <h1 class="main homepagehones">Bowl-O-Rama</h1>
+    <h1 class="main homepagehones jumbotron">Bowl-O-Rama</h1>
 
     <!--//////////// L O G I N ///////////////-->
         <div class="container" ng-show="showLoginPage">
@@ -40,7 +40,7 @@
         <!--///////////////// S I G N   U P /////////////////-->
         <div class="container" ng-show="showSignUpPage">
         <div class="signUp row">
-        <div class="col-xs-4">
+        <div class="col-xs-4 homepagehones">
           <h1>Sign-Up</h1>
           <form>
             <div class="form-group">
@@ -59,25 +59,21 @@
       </div>
       <!-- ///////////// H O M E  -  P A G E /////////// -->
       <div class="container jumbotron" ng-show="showDashboard">
-        <h1>Dashboard/Home Page</h1>
+        <h1>Dashboard / Home Page</h1>
         <h3>
           Welcome to Bowl-O-Rama
         </h3>
-        <div class="container" ng-show="createANewBowler">
+        <div class="container" ng-show="createNewBowlerPage">
           <h3>Create A New Bowler</h3>
           <div class="col-lg-6">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter Bowlers Name...">
+            <input ng-model="createNewBowlerName" type="text" class="form-control" placeholder="Enter Bowlers Name...">
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Create</button>
+              <button ng-click="createNewBowler()" class="btn btn-default" type="button">Create</button>
             </span>
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-      </div><!-- /.row -->
-
-
+          </div>
         </div>
-
+      </div>
       </div>
   </body>
 </html>

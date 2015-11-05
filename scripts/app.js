@@ -10,7 +10,7 @@ app.controller("bowlingController", ['$scope', function($scope) {
   $scope.showLoginPage=true;
   $scope.showSignUpPage=false;
   $scope.showDashboard=false;
-  $scope.createNewBowler=false;
+  $scope.createNewBowlerPage=false;
   $scope.loginEmail="";
   $scope.loginPassword="";
   $scope.signUpEmail="";
@@ -27,7 +27,7 @@ app.controller("bowlingController", ['$scope', function($scope) {
         $scope.showSignUpPage=false;
         $scope.showLoginPage=false;
         $scope.showDashboard=true;
-        $scope.createANewBowler=true;
+        $scope.createNewBowlerPage=true;
       },
       error: function(xhr)  {
         console.log(JSON.parse(xhr.responseText));

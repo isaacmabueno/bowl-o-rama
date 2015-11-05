@@ -1,8 +1,15 @@
 h1.main {
   font-family: 'Open Sans Condensed';
   text-align: center;
-  font-size: 50px;
+  font-size: 70px;
   display: none;
+  font-weight: bold;
+}
+h1.main.jumbotron{
+    padding-top:20px;
+    padding-bottom: 20px;
+    background-color: rgba(238, 238, 238, 0.6);
+
 }
 body {
  margin: 0;
