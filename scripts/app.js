@@ -11,6 +11,8 @@ app.controller("bowlingController", ['$scope', function($scope) {
   $scope.showSignUpPage=false;
   $scope.showDashboard=false;
   $scope.createNewBowlerPage=false;
+  $scope.viewAllBowlersPage=false;
+  $scope.viewAllLeaguesPage=false;
   $scope.loginEmail="";
   $scope.loginPassword="";
   $scope.signUpEmail="";
@@ -56,6 +58,44 @@ app.controller("bowlingController", ['$scope', function($scope) {
         console.log(JSON.parse(xhr.responseText));
       }
     });
+  };
+  $scope.viewAllBowlers = function() {
+    client.getBowlers({
+      success: function(bowlers) {
+        console.log(bowlers);
+        $scope.showDashboard=false;
+        $scope.viewAllBowlersPage=true;
+        $scope.bowlers=bowlers;
+      },
+      error: function(xhr) {
+        console.log(JSON.parse(xhr.responseText));
+      }
+    });
+  };
+  $scope.createNewLeague = function() {
+    client.createLeague({
+  name: $scope.createNewLeagueName,
+  success: function(league) {
+    console.log(league);
+  },
+  error: function(xhr)  {
+    console.log(JSON.parse(xhr.responseText));
+  }
+});
+  }
+  $scope.viewAllLeagues = function() {
+    client.getLeagues({
+  success: function(leagues) {
+    console.log(leagues);
+    $scope.showDashboard=false;
+    $scope.viewAllBowlersPage=false;
+    $scope.viewAllLeaguesPage=true;
+    $scope.leagues=leagues;
+  },
+  error: function(xhr)  {
+    console.log(JSON.parse(xhr.responseText));
+  }
+});
   };
   $scope.createAccount = function() {
   $scope.showSignUpPage=true;

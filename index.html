@@ -73,7 +73,46 @@
             </span>
           </div>
         </div>
+        <h3>Create A New League</h3>
+        <div class="col-lg-6">
+        <div class="input-group">
+          <input ng-model="createNewLeagueName" type="text" class="form-control" placeholder="Enter Your Lame Ass League Name...">
+          <span class="input-group-btn">
+            <button ng-click="createNewLeague()" class="btn btn-default" type="button">Create</button>
+          </span>
+        </div>
       </div>
+      </div>
+
+      <div class="container">
+        <div class="col-lg-6">
+        <div class="input-group">
+            <button ng-click="viewAllBowlers()"class="btn btn-lg" type="button">View All Bowlers</button>
+        </div>
+      </div>
+    </div>
+
+      <div class="container">
+        <div class="col-lg-6">
+        <div class="input-group">
+            <button ng-click="viewAllLeagues()" class="btn btn-lg" type="button">View All Leagues</button>
+        </div>
+      </div>
+    </div>
+      </div>
+      <!-- A L L      B O W L E R S -->
+      <div class="container bowlers" ng-show="viewAllBowlersPage">
+        <h1>All Bowlers</h1>
+          <ul>
+            <li ng-repeat="bowler in bowlers" class="lists">{{bowler.name}}</li>
+          </ul>
+      </div>
+      <!-- B O W L I N G     L E A G U E S -->
+      <div class="container leagues" ng-show=viewAllLeaguesPage>
+        <h1>All Leagues</h1>
+        <ul>
+          <li ng-repeat="league in leagues" class="lists">{{league.name}}</li>
+        </ul>
       </div>
   </body>
 </html>
