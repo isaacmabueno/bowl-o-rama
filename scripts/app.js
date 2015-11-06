@@ -72,6 +72,10 @@ app.controller("bowlingController", ['$scope', function($scope) {
       }
     });
   };
+  $scope.getSpecificBowler = function() {
+
+  }
+  
   $scope.createNewLeague = function() {
     client.createLeague({
   name: $scope.createNewLeagueName,
