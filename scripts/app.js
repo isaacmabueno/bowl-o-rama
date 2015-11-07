@@ -5,7 +5,7 @@ $(document).ready(function(){
 var app = angular.module('bowlsToTheWall', []);
 var client = new BowlingApiClient('http://bowling-api.nextcapital.com/api');
 // setting up a controller
-app.controller("bowlingController", ['$scope', function($scope) {
+app.controller("bowlingController", ['$scope', '$timeout', function($scope, $timeout) {
 //anything with $scope can be accessed in the HTML page. This is the purpose of SCOPE
   $scope.showLoginPage=true;
   $scope.showSignUpPage=false;
@@ -13,6 +13,8 @@ app.controller("bowlingController", ['$scope', function($scope) {
   $scope.createNewBowlerPage=false;
   $scope.viewAllBowlersPage=false;
   $scope.viewAllLeaguesPage=false;
+  $scope.getSpecificLeaguePage=false;
+  $scope.getSpecificBowlerPage=false;
   $scope.loginEmail="";
   $scope.loginPassword="";
   $scope.signUpEmail="";
@@ -72,10 +74,23 @@ app.controller("bowlingController", ['$scope', function($scope) {
       }
     });
   };
-  $scope.getSpecificBowler = function() {
-
+  $scope.getSpecificBowler = function(bowlerId) {
+    client.getBowler({
+      bowlerId: bowlerId,
+      success: function(bowler) {
+        console.log(bowler);
+        $scope.showDashboard=false;
+        $scope.viewAllBowlersPage=false;
+        $scope.viewAllLeaguesPage=false;
+        $scope.getSpecificLeaguePage=true;
+        $scope.bowler=bowler;
+      },
+      error: function(xhr) {
+        console.log(JSON.parse(xhr.responseText));
+      }
+    });
   }
-  
+
   $scope.createNewLeague = function() {
     client.createLeague({
   name: $scope.createNewLeagueName,
@@ -103,16 +118,20 @@ app.controller("bowlingController", ['$scope', function($scope) {
   };
   //placing league in this function passes the league id back because I threw it in the paramaters in the HTML file
   $scope.getSpecificLeague = function(leagueId) {
+
     client.getLeague({
   leagueId: leagueId,
+  // callback function or success function-- this is gaurenteed to run sycronously (in order)
   success: function(league) {
     console.log(league);
+
+    $scope.league=league;
     $scope.showDashboard=false;
     $scope.viewAllBowlersPage=false;
     $scope.viewAllLeaguesPage=false;
     $scope.getSpecificLeaguePage=true;
-    $scope.league=league;
-    // $scope.listofbowlers = getAllBowlersInLeague()
+    getAllBowlersInLeague(leagueId);
+    getAllLotteriesInLeague(leagueId);
   },
   error: function(xhr)  {
     console.log(JSON.parse(xhr.responseText));
@@ -135,17 +154,31 @@ app.controller("bowlingController", ['$scope', function($scope) {
 //make sure the NG models and clicks are in HTML and syncing that up with my APP.JS
 // figure out when youre going to call this function
   function getAllBowlersInLeague(leagueId) {
-  client.getBowlers({
-    leagueId: leagueId,
-    success: function(bowlers) {
-      console.log(bowlers);
-      return bowlers;
-    },
-    error: function(xhr)  {
-      console.log(JSON.parse(xhr.responseText));
-    }
-  });
+    client.getBowlers({
+      leagueId: leagueId,
+      success: function(bowlers) {
+// dont need a return, just set the scope variable inside of this function
+        $scope.listOfBowlers = bowlers;
+        console.log($scope.listOfBowlers);
+      },
+      error: function(xhr)  {
+        console.log(JSON.parse(xhr.responseText));
+      }
+    });
 };
+  function getAllLotteriesInLeague(leagueId) {
+    client.getLotteries({
+      leagueId: leagueId,
+      success: function(lotteries) {
+        console.log(lotteries);
+        $scope.listOfLotteries = lotteries;
+        $scope.latestLottery = $scope.listOfLotteries[$scope.listOfLotteries.length - 1];
+      },
+      error: function(xhr)  {
+        console.log(JSON.parse(xhr.responseText));
+      }
+    });
+  };
   $scope.createAccount = function() {
   $scope.showSignUpPage=true;
   $scope.showLoginPage=false;

@@ -104,7 +104,7 @@
       <div class="container bowlers" ng-show="viewAllBowlersPage">
         <h1>All Bowlers</h1>
           <ul>
-            <li ng-repeat="bowler in bowlers" class="lists">{{bowler.name}}</li>
+            <li ng-repeat="bowler in bowlers" class="lists"><a ng-click="getSpecificBowler(bowler.id)">{{bowler.name}}</a></li>
           </ul>
       </div>
       <div class="container specificBowler" ng-show="getSpecificBowlerPage">
@@ -130,11 +130,13 @@
           <button ng-click="joinLeague(newBowlerToLeague,league.id)" type="submit" class="btn btn-primary">Add To League</button>
 
           </form>
-          <div class="">
-
+          <!-- when the specific league page is showing....This will always be showing. Only need one ng-show in the parent div. -->
+          <div class="container bowlersInLeague">
+            <h1> All Bowlers in {{league.name}}</h1>
+            <ul>
+              <li ng-repeat="bowler in listOfBowlers"><a ng-click="getSpecificBowler(bowler.id)">Bowler Name: {{bowler.name}}<br> Bowler Id:{{bowler.id}}</a></li>
+            </ul>
           </div>
-
-
       </div>
   </body>
 </html>
