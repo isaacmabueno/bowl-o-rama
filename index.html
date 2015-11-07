@@ -107,6 +107,11 @@
             <li ng-repeat="bowler in bowlers" class="lists">{{bowler.name}}</li>
           </ul>
       </div>
+      <div class="container specificBowler" ng-show="getSpecificBowlerPage">
+        <h1>{{league.name}}</h1>
+      <!-- create a form here so that you can get specific bowlers -->
+
+      </div>
       <!-- B O W L I N G     L E A G U E S -->
       <div class="container leagues" ng-show="viewAllLeaguesPage">
         <h1>All Leagues</h1>
@@ -118,6 +123,7 @@
         <h1>{{league.name}}</h1>
         <form>
           <div class="form-group">
+            <!-- //double check on the number type. Might need to change this -->
             <label for="exampleInputEmail1">Add New Bowler To League</label>
             <input ng-model="newBowlerToLeague" type="number" class="form-control" id="" placeholder="Name">
           </div>
