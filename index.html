@@ -121,6 +121,7 @@
       </div>
       <div class="container specificLeague" ng-show="getSpecificLeaguePage">
         <h1>{{league.name}}</h1>
+          <h3>Current Jackpot Balance: {{latestLottery.balance| currency:"USD $"}}</h3>
         <form>
           <div class="form-group">
             <!-- //double check on the number type. Might need to change this -->
