@@ -29,6 +29,21 @@ h1.bowlers{
   color: white;
   text-align: center;
 }
-h1.li{
-  
+.bowlersInLeague li{
+  list-style-type: none;
+  font-family: arial;
+}
+.bowlersInLeague li a{
+
+}
+
+hr {
+  color: black;
+  width: 50%;
+}
+.leagues.jumbotron h1{
+  text-align: center;
+}
+.bowlers.jumbotron h1{
+  text-align: center;
 }

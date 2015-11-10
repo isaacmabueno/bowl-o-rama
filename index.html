@@ -101,7 +101,7 @@
     </div>
       </div>
       <!-- A L L      B O W L E R S -->
-      <div class="container bowlers" ng-show="viewAllBowlersPage">
+      <div class="container bowlers jumbotron" ng-show="viewAllBowlersPage">
         <h1>All Bowlers</h1>
           <ul>
             <li ng-repeat="bowler in bowlers" class="lists"><a ng-click="getSpecificBowler(bowler.id)">{{bowler.name}}</a></li>
@@ -113,7 +113,7 @@
 
       </div>
       <!-- B O W L I N G     L E A G U E S -->
-      <div class="container leagues" ng-show="viewAllLeaguesPage">
+      <div class="container leagues jumbotron" ng-show="viewAllLeaguesPage">
         <h1>All Leagues</h1>
         <ul>
           <li ng-repeat="league in leagues" class="lists"><a ng-click="getSpecificLeague(league.id)">{{league.name}}</a></li>
@@ -132,10 +132,22 @@
 
           </form>
           <!-- when the specific league page is showing....This will always be showing. Only need one ng-show in the parent div. -->
-          <div class="container bowlersInLeague">
+          <div class="container bowlersInLeague jumbotron">
             <h1> All Bowlers in {{league.name}}</h1>
             <ul>
-              <li ng-repeat="bowler in listOfBowlers"><a ng-click="getSpecificBowler(bowler.id)">Bowler Name: {{bowler.name}}<br> Bowler Id:{{bowler.id}}</a></li>
+              <li ng-repeat="bowler in listOfBowlers"><a ng-click="getSpecificBowler(bowler.id)">Bowler Name: {{bowler.name}}<br> Bowler Id:{{bowler.id}}
+                <form class="form-inline">
+                  <div class="form-group">
+                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">Number of Tickets</div>
+                      <input type="text" class="form-control" id="exampleInputAmount" placeholder="# Of Tickets">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <hr></a>
+              </li>
             </ul>
           </div>
       </div>
