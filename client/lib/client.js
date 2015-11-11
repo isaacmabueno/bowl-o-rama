@@ -18,7 +18,10 @@ var BowlingApiClient = (function() {
   var requestParams = function(options) {
     return {
       contentType: 'application/json',
-      headers: { Authorization: 'Basic ' + getAuthorizationToken() },
+      headers: {
+        Authorization: 'Basic ' + getAuthorizationToken(),
+        Access-Control-Allow-Origin: *
+      },
       success: options.success,
       error: options.error
     };
