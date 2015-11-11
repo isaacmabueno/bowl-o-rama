@@ -6,9 +6,9 @@ h1.main {
   font-weight: bold;
 }
 h1.main.jumbotron{
-    padding-top:20px;
-    padding-bottom: 20px;
-    background-color: rgba(238, 238, 238, 0.6);
+  padding-top:20px;
+  padding-bottom: 20px;
+  background-color: rgba(238, 238, 238, 0.6);
 
 }
 body {
@@ -32,18 +32,31 @@ h1.bowlers{
 .bowlersInLeague li{
   list-style-type: none;
   font-family: arial;
+  margin-top:5%;
 }
 .bowlersInLeague li a{
-
+  color: white;
+  font-family: Helvetica;
 }
 
-hr {
+/*hr {
   color: black;
   width: 50%;
-}
+}*/
 .leagues.jumbotron h1{
   text-align: center;
 }
 .bowlers.jumbotron h1{
   text-align: center;
+}
+.specificLeague h3{
+  color: white;
+  text-align: center;
+}
+.specificLeague h1{
+  color: white;
+  text-align: center;
+}
+.winningBowler{
+  color: white;
 }

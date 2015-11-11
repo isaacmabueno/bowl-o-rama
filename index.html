@@ -132,21 +132,32 @@
 
           </form>
           <!-- when the specific league page is showing....This will always be showing. Only need one ng-show in the parent div. -->
-          <div class="container bowlersInLeague jumbotron">
+          <div class="container bowlersInLeague">
             <h1> All Bowlers in {{league.name}}</h1>
+            <button ng-click="drawingTheWinner(league.id,latestLottery.id)" type="button" class="btn btn-primary btn-lg winner">Draw Lottery Bowler!</button>
+            <div class="winningBowler" ng-show="winningBowlerDrawn">
+              The winner is {{winningBowler.name}}!
+              <form>
+                <div class="form-group">
+                  <label for="enterPins">Number of pins the winning bowler knocked over</label>
+                  <input ng-model="numberOfPins" type="number" class="form-control" id="" placeholder="# of pins">
+                </div>
+                <button ng-click="recordRoll(numberOfPins, league.id, latestLottery.id)" type="submit" class="btn btn-primary">Enter Result of Roll</button>
+              </form>
+            </div>
+            <button ng-click="viewHistory(league.id)" type="button" class="btn btn-primary btn-lg winner">View Lottery History</button>
+            <div class="jpHistory" ng-show="jackpotHistory">
+              <ul>
+                <li ng-repeat="lottery in listOfLotteries">Balance: {{lottery.balance}}<br>Payout: {{lottery.payout}}</li>
+              </ul>
+
+            </div>
             <ul>
               <li ng-repeat="bowler in listOfBowlers"><a ng-click="getSpecificBowler(bowler.id)">Bowler Name: {{bowler.name}}<br> Bowler Id:{{bowler.id}}
                 <form class="form-inline">
-                  <div class="form-group">
-                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                    <div class="input-group">
-                      <div class="input-group-addon">Number of Tickets</div>
-                      <input type="text" class="form-control" id="exampleInputAmount" placeholder="# Of Tickets">
-                    </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button ng-click="addToLottery(bowler.id, latestLottery.id, league.id )" type="submit" class="btn btn-primary">Purchase a Ticket</button>
                 </form>
-                <hr></a>
+                </a>
               </li>
             </ul>
           </div>
