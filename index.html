@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-<link href='https://fonts.googleapis.com/css?family=Anton|Archivo+Narrow|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Anton|Archivo+Narrow|Alegreya|Roboto|Roboto+Condensed|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="stylesheets/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -102,9 +102,10 @@
       </div>
       <!-- A L L      B O W L E R S -->
       <div class="container bowlers jumbotron" ng-show="viewAllBowlersPage">
+        <button ng-click="backToDashboard()" class="btn btn-primary" type="button" name="button">Back</button>
         <h1>All Bowlers</h1>
           <ul>
-            <li ng-repeat="bowler in bowlers" class="lists"><a ng-click="getSpecificBowler(bowler.id)">{{bowler.name}}</a></li>
+            <li ng-repeat="bowler in bowlers" class="lists">Name: {{bowler.name}}</br>ID: {{bowler.id}}</li>
           </ul>
       </div>
       <div class="container specificBowler" ng-show="getSpecificBowlerPage">
@@ -114,19 +115,21 @@
       </div>
       <!-- B O W L I N G     L E A G U E S -->
       <div class="container leagues jumbotron" ng-show="viewAllLeaguesPage">
+        <button ng-click="backToDashboard()" class="btn btn-primary" type="button" name="button">Back</button>
         <h1>All Leagues</h1>
         <ul>
           <li ng-repeat="league in leagues" class="lists"><a ng-click="getSpecificLeague(league.id)">{{league.name}}</a></li>
         </ul>
       </div>
       <div class="container specificLeague" ng-show="getSpecificLeaguePage">
+        <button ng-click="backToShowAllLeagues()" class="btn btn-primary" type="button" name="button">Back</button>
         <h1>{{league.name}}</h1>
           <h3>Current Jackpot Balance: {{latestLottery.balance| currency:"USD $"}}</h3>
         <form>
           <div class="form-group">
             <!-- //double check on the number type. Might need to change this -->
-            <label for="exampleInputEmail1">Add New Bowler To League</label>
-            <input ng-model="newBowlerToLeague" type="number" class="form-control" id="" placeholder="Name">
+            <label class="homepagehones"for="exampleInputEmail1">Add New Bowler To League</label>
+            <input ng-model="newBowlerToLeague" type="number" class="form-control" id="" placeholder="Bowler ID">
           </div>
           <button ng-click="joinLeague(newBowlerToLeague,league.id)" type="submit" class="btn btn-primary">Add To League</button>
 
@@ -135,7 +138,7 @@
           <div class="container bowlersInLeague">
             <h1> All Bowlers in {{league.name}}</h1>
             <button ng-click="drawingTheWinner(league.id,latestLottery.id)" type="button" class="btn btn-primary btn-lg winner">Draw Lottery Bowler!</button>
-            <div class="winningBowler" ng-show="winningBowlerDrawn">
+            <div class="homepagehones" ng-show="winningBowlerDrawn">
               The winner is {{winningBowler.name}}!
               <form>
                 <div class="form-group">
@@ -145,10 +148,23 @@
                 <button ng-click="recordRoll(numberOfPins, league.id, latestLottery.id)" type="submit" class="btn btn-primary">Enter Result of Roll</button>
               </form>
             </div>
-            <button ng-click="viewHistory(league.id)" type="button" class="btn btn-primary btn-lg winner">View Lottery History</button>
+
+            <div class="backdrop">
+              <button ng-click="viewHistory(league.id)" type="button" class="btn btn-primary btn-lg winner">View Lottery History</button>
+            </div>
+            <div class="backdrop">
+              <button ng-click="viewAllBowlersFromLeaguePage()"class="btn btn-primary btn-lg allBowlers" type="button">View All Bowlers</button>
+            </div>
             <div class="jpHistory" ng-show="jackpotHistory">
+              <div class="background">
+                <ul>
+                  <li ng-repeat="lottery in listOfLotteries">Balance: {{lottery.balance}}<br>Payout: {{lottery.payout}}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="jpHistory" ng-show="bowlersFromLeaguePage">
               <ul>
-                <li ng-repeat="lottery in listOfLotteries">Balance: {{lottery.balance}}<br>Payout: {{lottery.payout}}</li>
+                <li ng-repeat="bowler in bowlers">Name: {{bowler.name}}<br>ID: {{bowler.id}}</li>
               </ul>
 
             </div>

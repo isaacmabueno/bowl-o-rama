@@ -203,7 +203,7 @@ app.controller("bowlingController", ['$scope', '$timeout', function($scope, $tim
     lotteryId: lotteryId,
     success: function(roll) {
       $timeout(function() {
-        $scope.listOfLotteries = lotteries;
+        $scope.listOfLotteries = roll;
         if ($scope.jackpotHistory) {
           $scope.jackpotHistory=false;
         }
@@ -288,6 +288,26 @@ function getWinningBowlerName(bowlerId) {
       }
     });
   }
+  $scope.viewAllBowlersFromLeaguePage = function() {
+    client.getBowlers({
+      success: function(bowlers) {
+        console.log(bowlers);
+
+        $timeout(function() {
+          $scope.bowlers=bowlers;
+          if ($scope.bowlersFromLeaguePage) {
+            $scope.bowlersFromLeaguePage=false;
+          }
+          else {
+            $scope.bowlersFromLeaguePage=true;
+          }
+        }, 100)
+      },
+      error: function(xhr) {
+        console.log(JSON.parse(xhr.responseText));
+      }
+    });
+  };
   $scope.createAccount = function() {
   $scope.showSignUpPage=true;
   $scope.showLoginPage=false;
@@ -295,5 +315,14 @@ function getWinningBowlerName(bowlerId) {
   $scope.hasAccount = function() {
     $scope.showLoginPage=true;
     $scope.showSignUpPage=false;
+  };
+  $scope.backToDashboard = function() {
+    $scope.viewAllBowlersPage = false;
+    $scope.viewAllLeaguesPage = false;
+    $scope.showDashboard = true;
+  };
+  $scope.backToShowAllLeagues = function() {
+    $scope.viewAllLeaguesPage = true;
+    $scope.getSpecificLeaguePage=false;
   };
 }]);

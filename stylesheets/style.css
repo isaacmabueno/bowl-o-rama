@@ -1,5 +1,5 @@
 h1.main {
-  font-family: 'Open Sans Condensed';
+  font-family: 'Alegreya';
   text-align: center;
   font-size: 70px;
   display: none;
@@ -10,6 +10,9 @@ h1.main.jumbotron{
   padding-bottom: 20px;
   background-color: rgba(238, 238, 238, 0.6);
 
+}
+.jumbotron{
+  font-family: 'Roboto Condensed'
 }
 body {
  margin: 0;
@@ -52,11 +55,28 @@ h1.bowlers{
 .specificLeague h3{
   color: white;
   text-align: center;
+  font-family: roboto;
 }
 .specificLeague h1{
   color: white;
   text-align: center;
+  font-family: roboto;
 }
-.winningBowler{
+.bowlersInLeague li{
   color: white;
+}
+.jpHistory li{
+  color: white;
+  font-weight: bolder;
+  text-align:center;
+}
+.jpHistory.background ul{
+  background-color: white !important;
+}
+.label {
+  color: white;
+}
+.specificLeague.form-control input{
+  width: 20% !important;
+  text-align: center;
 }
