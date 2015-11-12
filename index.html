@@ -135,10 +135,10 @@
           <button ng-click="joinLeague(newBowlerToLeague,league.id)" type="submit" class="btn btn-primary">Add To League</button>
 
           </form>
+          <h1> Options</h1>
           <!-- when the specific league page is showing....This will always be showing. Only need one ng-show in the parent div. -->
           <div class="container bowlersInLeague">
-            <h1> All Bowlers in {{league.name}}</h1>
-            <button ng-click="drawingTheWinner(league.id,latestLottery.id)" type="button" class="btn btn-primary btn-lg winner">Draw Lottery Bowler!</button>
+            <button ng-click="drawingTheWinner(league.id,latestLottery.id)" type="button" class="btn btn-primary winner indexBtn">Draw Lottery Bowler!</button>
             <div class="homepagehones" ng-show="winningBowlerDrawn">
               The winner is {{winningBowler.name}}!
               <form>
@@ -151,10 +151,10 @@
             </div>
 
             <div class="backdrop">
-              <button ng-click="viewHistory(league.id)" type="button" class="btn btn-primary btn-lg winner">View Lottery History</button>
+              <button ng-click="viewHistory(league.id)" type="button" class="btn btn-primary winner indexBtn">View Lottery History</button>
             </div>
             <div class="backdrop">
-              <button ng-click="viewAllBowlersFromLeaguePage()"class="btn btn-primary btn-lg allBowlers" type="button">View All Bowlers</button>
+              <button ng-click="viewAllBowlersFromLeaguePage()"class="btn btn-primary allBowlers indexBtn" type="button">View All Bowlers</button>
             </div>
             <div class="jpHistory" ng-show="jackpotHistory">
               <div class="background">
@@ -163,6 +163,7 @@
                 </ul>
               </div>
             </div>
+            <h1> All Bowlers in {{league.name}}</h1>
             <div class="jpHistory" ng-show="bowlersFromLeaguePage">
               <ul>
                 <li ng-repeat="bowler in bowlers">Name: {{bowler.name}}<br>ID: {{bowler.id}}</li>

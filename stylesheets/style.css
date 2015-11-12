@@ -17,6 +17,7 @@ h1.main.jumbotron{
 body {
  margin: 0;
  background-image: url(../images/bowling.jpeg);
+ background-attachment: fixed;
  background-repeat:no-repeat;
  background-size: cover;
  font: 13px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -35,7 +36,7 @@ h1.bowlers{
 .bowlersInLeague li{
   list-style-type: none;
   font-family: arial;
-  margin-top:5%;
+  margin-top:15px;
 }
 .bowlersInLeague li a{
   color: white;
@@ -79,4 +80,7 @@ h1.bowlers{
 .specificLeague.form-control input{
   width: 20% !important;
   text-align: center;
+}
+.indexBtn{
+  margin-top: 5px;
 }
