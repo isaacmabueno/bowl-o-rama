@@ -10,7 +10,7 @@ NextCapital coding
 
 **TECHNOLOGIES USED:** HTML5, CSS3 (Bootstrap), RESTful API, JAVASCRIPT, JQUERY
 
-**GALLERY**
+**GALLERY:**
 ![alt image] (http://i.imgur.com/4F3uifX.png)
 ![alt image] (http://i.imgur.com/rC2h85N.png)
 ![alt image] (http://i.imgur.com/MpR9BuY.png)
